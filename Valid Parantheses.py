@@ -23,7 +23,7 @@ def valid_parentheses(string):
     return not finString
 
 print (valid_parentheses('p(tdms)qgz(tc(rx)nk)v()f'))
-
+sorted()
 
 # --------------------------------- option 2 --------------------------------- #
 def valid_parentheses(string):
