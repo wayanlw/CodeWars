@@ -1,32 +1,19 @@
-# import re
-
-# def valid_parentheses(string):
-#     #your code here
-#     while re.search('\(.*?\)',string):
-#         string = re.sub('\(.*?\)','',string,1)
-#         print (string)
-#     print ("final String ", string)
-
-#     if '(' in string: return False
-#     if ')' in string: return False
-#     return True
-
-#     # return not ('(' in string or ')' in string)
-
-# print (valid_parentheses(''))
-
 import re
 
-def valid_parentheses(string):
-    paran = []
-    for i in string:
-        if i =='(' or i== ')':
-            paran.append(i)
-    finString = ''.join(paran)
+def generate_hashtag(s):
+    if s=='': return False
 
-    while '()' in finString:
-        finString = finString.replace('()','')
+    finString = []
+    cleanString = re.sub(' +',' ',s.strip())
+    cleanString = cleanString.title()
+    if cleanString[0] != '#':
+        finString.append('#')
+    for i,char in enumerate(cleanString):
+        if char != ' ':
+            finString.append(char)
 
-    return not finString
+    if len(finString) > 140: return False
+    return ''.join(finString)
 
-print (valid_parentheses('p(tdms)qgz(tc(rx)nk)v()f'))
+
+print(generate_hashtag('   Hello     World   '))
