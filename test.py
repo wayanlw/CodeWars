@@ -1,32 +1,32 @@
-# ---------------------------------------------------------------------------- #
-#                             convert to camel case                             #
-# ---------------------------------------------------------------------------- #
+# import re
 
-# ----------------------------- my first solution ---------------------------- #
+# def valid_parentheses(string):
+#     #your code here
+#     while re.search('\(.*?\)',string):
+#         string = re.sub('\(.*?\)','',string,1)
+#         print (string)
+#     print ("final String ", string)
 
-def to_camel_case(text):
-    #your code here
-    # ret = [x.title() for x in text.replace("-","_").split("_")]
-    finalstr = []
-    ret = text.replace("-","_").split("_")
-    for i,word in enumerate(ret):
-        if i==0:
-            finalstr.append(word)
-            continue
-        finalstr.append(word.title())
-    return ''.join(finalstr)
+#     if '(' in string: return False
+#     if ')' in string: return False
+#     return True
 
+#     # return not ('(' in string or ')' in string)
 
+# print (valid_parentheses(''))
 
-text = "the_stealth_warrior"
-print (to_camel_case(text))
+import re
 
-# ---------------------------- my better solution ---------------------------- #
+def valid_parentheses(string):
+    paran = []
+    for i in string:
+        if i =='(' or i== ')':
+            paran.append(i)
+    finString = ''.join(paran)
 
-def to_camel_case(text):
-    seperated = text.replace("-","_").split("_") # seperating text
-    return (seperated[0] + ''.join([x.title() for x in seperated[1:]]))
+    while '()' in finString:
+        finString = finString.replace('()','')
 
+    return not finString
 
-
-
+print (valid_parentheses('p(tdms)qgz(tc(rx)nk)v()f'))
